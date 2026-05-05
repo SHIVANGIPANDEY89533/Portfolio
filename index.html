@@ -5,21 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHIVANGI PANDEY</title>
+  <title>Shivangi Pandey — Portfolio</title>
+  <meta name="description" content="Personal portfolio of Shivangi Pandey — Data Engineering Enthusiast, Python Developer, and Front-End Developer based in Lucknow, India.">
 
-  <!--
-    - favicon
-  -->
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
   <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--
-    - google font link
-  -->
+  <link rel="stylesheet" href="./assets/css/portfolio-extra.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -27,337 +18,363 @@
 
 <body>
 
-  <!--
-    - #MAIN
-  -->
-
   <main>
 
-    <!--
-      - #SIDEBAR
-    -->
-
+    <!-- ═══════════════ SIDEBAR ═══════════════ -->
     <aside class="sidebar" data-sidebar>
 
       <div class="sidebar-info">
-
         <figure class="avatar-box">
-          <img src="assets/images/self.jpg" alt="Shivangi Pandey" width="125px" height="130px" class="responsive">
+          <img id="profile-avatar" src="assets/images/self.jpg" alt="Shivangi Pandey" width="80">
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="shivangi pandey">Shivangi Pandey</h1>
-
-          <p class="title">Data Engineering Enthusiast</p>
+          <h1 id="profile-name" class="name" title="Shivangi Pandey">Shivangi Pandey</h1>
+          <p id="profile-title" class="title">Data Engineering Enthusiast</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
           <span>Show Contacts</span>
-
           <ion-icon name="chevron-down"></ion-icon>
         </button>
-
       </div>
 
       <div class="sidebar-info_more">
-
         <div class="separator"></div>
 
         <ul class="contacts-list">
-
           <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Email</p>
-
-              <a href="assets/images/email.png" class="contact-link">shivangipandey89533@gmail.com</a>
+              <a id="contact-email" class="contact-link" href="#">shivangipandey89533@gmail.com</a>
             </div>
-
           </li>
 
           <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
+            <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Phone</p>
-
-              <a href="tel:+918953314748" class="contact-link">+918953314748</a>
+              <a id="contact-phone" class="contact-link" href="#">+918953314748</a>
             </div>
-
           </li>
 
           <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
+            <div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Birthday</p>
-
-              <time datetime="2004-02-18">February 18, 2004</time>
+              <time id="contact-birthday">February 18, 2004</time>
             </div>
-
           </li>
 
           <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Location</p>
-
-              <address>Lucknow, Uttar Pradesh</address>
+              <address id="contact-location">Lucknow, Uttar Pradesh</address>
             </div>
-
           </li>
-
         </ul>
 
         <div class="separator"></div>
 
         <ul class="social-list">
-
           <li class="social-item">
-            <a href="https://www.facebook.com/share/1GdK2erdS4/" class="social-link">
+            <a id="social-facebook" href="#" class="social-link">
               <ion-icon name="logo-facebook"></ion-icon>
             </a>
           </li>
-
           <li class="social-item">
-            <a href="https://x.com/pandey_41872?t=V52cZhScWndG9gBKl1R2dw&s=09" class="social-link">
+            <a id="social-twitter" href="#" class="social-link">
               <ion-icon name="logo-twitter"></ion-icon>
             </a>
           </li>
-
           <li class="social-item">
-            <a href="https://www.instagram.com/_brahmin_girl_8090/profilecard/?igsh=ejF2a3R3a2x1aXgy" class="social-link">
+            <a id="social-instagram" href="#" class="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
-
-
-
-          
+          <li class="social-item">
+            <a id="social-linkedin" href="#" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a id="social-github" href="#" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
         </ul>
 
-      </div>
+        <div class="separator"></div>
 
+        <div class="sidebar-actions">
+          <a id="resume-download" href="#" download class="resume-btn" style="display:none">
+            <ion-icon name="cloud-download-outline"></ion-icon>
+            <span>Download Resume</span>
+          </a>
+          <a href="admin.html" class="admin-btn" title="Admin Panel">
+            <ion-icon name="settings-outline"></ion-icon>
+            <span>Admin Panel</span>
+          </a>
+        </div>
+
+      </div>
     </aside>
 
-
-
-
-    <!--
-      - #main-content
-    -->
-
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
     <div class="main-content">
 
-      <!--
-        - #NAVBAR
-      -->
+      <!-- NAV TABS -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link data-page="about">About</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-page="portfolio">Portfolio</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-page="education">Education</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-page="contact">Contact</button>
+          </li>
+        </ul>
+      </nav>
 
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
+      <!-- ── ABOUT ───────────────────────────────────── -->
+      <article class="about active" data-page="about">
         <header>
-          <h2 class="h2 article-title">About me</h2>
+          <h2 class="h2 article-title">About Me</h2>
         </header>
 
         <section class="about-text">
-          <p>
-            Data Engineering enthusiast currently exploring the power of Microsoft Azure ☁️. Skilled in Python, GitHub, MS Office, Linux CLI, Canva, and front-end basics. Ready to transform data into impact — one project at a time.
-          </p>
-          
-         
+          <p id="about-bio">Loading...</p>
         </section>
-
-
-        <!--
-          - service
-        -->
 
         <section class="service">
-
-          <h3 class="h3 service-title">SKILLS</h3>
-          
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="assets/images/python.png"
-                 alt="design icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">PYTHON</h4>
-
-                <p class="service-item-text">
-                  Applied advanced Python concepts in data analysis, automation, and machine learning workflows using Pandas, MatPlotLib.
-                </p>
-              </div>
-
-            </li>
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="assets/images/ms.jpg"
-                 alt="design icon" width="40" >
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">MICROSOFT TOOLS</h4>
-
-                <p class="service-item-text">
-                  Skilled in leveraging Microsoft Office Suite for efficient documentation, data analysis, and presentations          </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src=" assets/images/fed.jpeg" alt="Web development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Front End developer</h4>
-
-                <p class="service-item-text">
-                  Creating fast, responsive, and dynamic websites using pure HTML, CSS, and JavaScript — no frameworks, just fundamentals.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src=" assets/images/language.webp" alt="mobile app icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Languages</h4>
-
-                <p class="service-item-text">
-                  Have experience of Professional ENGLISH and HINDI.
-                </p>
-              </div>
-
-            </li>
-
-            
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="assets/images/linu.jpg" alt="camera icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">LINUX(Basic Terminal Usage)</h4>
-
-                <p class="service-item-text">
-                  Familiar with Linux terminal commands for file management, navigation, and system operations
-                </p>
-              </div>
-
-            </li>
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="assets/images/canva.jpg" alt="camera icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">CANVA</h4>
-
-                <p class="service-item-text">
-                  Transforming ideas into impactful visuals with Canva — from clean presentations to scroll-stopping social media content.
-                </p>
-              </div>
-
-            </li>
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="assets/images/GitHub-Symbol-700x394.png" alt="camera icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">GITHUB</h4>
-
-                <p class="service-item-text">
-                  Keeping code clean, tracked, and collaborative — one GitHub commit at a time.
-                </p>
-              </div>
-
-            </li>
-
+          <h3 class="h3 service-title">Skills</h3>
+          <ul id="skills-list" class="service-list">
+            <!-- rendered by portfolio.js -->
           </ul>
+        </section>
+      </article>
+
+      <!-- ── PORTFOLIO ───────────────────────────────── -->
+      <article class="portfolio" data-page="portfolio">
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+          <ul id="projects-list" class="project-list">
+            <!-- rendered by portfolio.js -->
+          </ul>
+        </section>
+      </article>
+
+      <!-- ── EDUCATION ───────────────────────────────── -->
+      <article class="education" data-page="education">
+        <header>
+          <h2 class="h2 article-title">Education &amp; Certifications</h2>
+        </header>
+
+        <section class="timeline">
+          <h3 class="h3 timeline-title">Education</h3>
+          <ol id="education-list" class="timeline-list">
+            <!-- rendered by portfolio.js -->
+          </ol>
+        </section>
+
+        <section class="timeline">
+          <h3 class="h3 timeline-title">Certifications</h3>
+          <ul id="certifications-list" class="cert-list">
+            <!-- rendered by portfolio.js -->
+          </ul>
+        </section>
+      </article>
+
+      <!-- ── CONTACT ───────────────────────────────── -->
+      <article class="contact" data-page="contact">
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <!-- Intro -->
+        <section class="contact-intro">
+          <p class="contact-intro-text">
+            Feel free to reach out — I'm always open to new opportunities, collaborations, or just a friendly chat! 😊
+          </p>
+        </section>
+
+        <!-- Contact Cards -->
+        <section class="contact-cards-grid">
+
+          <!-- Phone -->
+          <a id="contact-card-phone" href="tel:+918953314748" class="contact-card contact-card--phone">
+            <div class="contact-card-icon">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Call Me</span>
+              <span class="contact-card-value" id="cc-phone">+91 8953314748</span>
+            </div>
+            <ion-icon name="chevron-forward-outline" class="contact-card-arrow"></ion-icon>
+          </a>
+
+          <!-- WhatsApp -->
+          <a id="contact-card-whatsapp"
+             href="https://wa.me/918953314748?text=Hi%20Shivangi%2C%20I%20found%20your%20portfolio%20and%20wanted%20to%20connect!"
+             target="_blank" rel="noopener"
+             class="contact-card contact-card--whatsapp">
+            <div class="contact-card-icon">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">WhatsApp</span>
+              <span class="contact-card-value">Chat with me</span>
+            </div>
+            <ion-icon name="chevron-forward-outline" class="contact-card-arrow"></ion-icon>
+          </a>
+
+          <!-- Email -->
+          <a id="contact-card-email" href="mailto:shivangipandey89533@gmail.com" class="contact-card contact-card--email">
+            <div class="contact-card-icon">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Email Me</span>
+              <span class="contact-card-value" id="cc-email">shivangipandey89533@gmail.com</span>
+            </div>
+            <ion-icon name="chevron-forward-outline" class="contact-card-arrow"></ion-icon>
+          </a>
+
+          <!-- Location -->
+          <div class="contact-card contact-card--location">
+            <div class="contact-card-icon">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Location</span>
+              <span class="contact-card-value" id="cc-location">Lucknow, Uttar Pradesh</span>
+            </div>
+          </div>
 
         </section>
 
+        <!-- Social Links -->
+        <section class="contact-socials-section">
+          <h3 class="h3 contact-socials-title">Find me on</h3>
+          <div class="contact-socials-row" id="cc-socials"></div>
+        </section>
 
-        
-
-       
-
-        <!--
-          - clients
-        -->
-
-        
+      </article>
 
 
+    </div>
+  </main>
 
-
-      <!--
-        - #RESUME
-      -->
-
-      
-  <!--
-    - custom js link
-  -->
+  <!-- Scripts -->
+  <script src="./assets/js/portfolio-data.js"></script>
+  <script src="./assets/js/portfolio.js"></script>
   <script src="./assets/js/script.js"></script>
 
-  <!--
-    - ionicon link
-  -->
+  <!-- Nav tab switching -->
+  <script>
+    document.querySelectorAll('[data-nav-link]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const page = this.dataset.page;
+        document.querySelectorAll('[data-nav-link]').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('[data-page]').forEach(a => {
+          if (a.tagName === 'ARTICLE') a.classList.remove('active');
+        });
+        this.classList.add('active');
+        document.querySelector(`article[data-page="${page}"]`).classList.add('active');
+      });
+    });
+
+    const OWNER_EMAIL = 'shivangipandey89533@gmail.com';
+
+    function handleContact(e) {
+      e.preventDefault();
+
+      const name    = document.getElementById('cf-name').value.trim();
+      const email   = document.getElementById('cf-email').value.trim();
+      const subject = document.getElementById('cf-subject').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
+
+      const btn     = document.getElementById('cf-submit-btn');
+      const btnIcon = document.getElementById('cf-btn-icon');
+      const btnText = document.getElementById('cf-btn-text');
+
+      btn.disabled = true;
+      btnIcon.setAttribute('name', 'reload-outline');
+      btnText.textContent = 'Sending...';
+      btn.style.opacity = '0.75';
+
+      const resetBtn = () => {
+        btn.disabled = false;
+        btnIcon.setAttribute('name', 'paper-plane');
+        btnText.textContent = 'Send Message';
+        btn.style.opacity = '1';
+      };
+
+      // On localhost → skip fetch, go straight to mailto
+      const isLocal = location.hostname === 'localhost' ||
+                      location.hostname === '127.0.0.1' ||
+                      location.hostname === '';
+
+      if (isLocal) {
+        openMailto(name, email, subject, message);
+        resetBtn();
+        return;
+      }
+
+      // On live site → try Formsubmit AJAX first
+      fetch('https://formsubmit.co/ajax/' + OWNER_EMAIL, {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body   : JSON.stringify({ fullname: name, email, subject, message })
+      })
+      .then(r => r.json())
+      .then(json => {
+        if (json.success === 'true' || json.success === true) {
+          showResult('success', '✅ Message sent successfully! I\'ll get back to you soon.');
+          e.target.reset();
+        } else { throw new Error(); }
+      })
+      .catch(() => {
+        // Formsubmit failed on live site → fallback to mailto
+        openMailto(name, email, subject, message);
+      })
+      .finally(resetBtn);
+    }
+
+    function openMailto(name, email, subject, message) {
+      const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+      const url  = `mailto:${OWNER_EMAIL}`
+                 + `?subject=${encodeURIComponent(subject)}`
+                 + `&body=${encodeURIComponent(body)}`;
+      window.location.href = url;
+      showResult('success',
+        '📧 Your email app has opened with the message pre-filled — just hit Send!' +
+        `<br><small style="opacity:0.75">Or email directly: <a href="mailto:${OWNER_EMAIL}" style="color:inherit">${OWNER_EMAIL}</a></small>`
+      );
+    }
+
+    function showResult(type, msg) {
+      const el = document.getElementById('contact-result');
+      el.style.display = 'flex';
+      el.className = 'contact-result contact-result--' + type;
+      el.innerHTML = msg;
+      setTimeout(() => { el.style.display = 'none'; }, 10000);
+    }
+  </script>
+
+  <!-- Ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script>
 
-
-
-    
-  </script>
 </body>
-
 </html>

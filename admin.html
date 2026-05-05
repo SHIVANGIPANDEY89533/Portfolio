@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — Portfolio</title>
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <link rel="stylesheet" href="assets/css/portfolio-extra.css">
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     LOGIN SCREEN
+════════════════════════════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">🔐</div>
+    <h1>Admin Panel</h1>
+    <p>Enter your password to manage portfolio content</p>
+    <input id="pwd-input" class="login-input" type="password"
+           placeholder="Password" autofocus
+           onkeydown="if(event.key==='Enter') doLogin()">
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <p class="login-error" id="login-err"></p>
+    <p class="login-hint">Default password: <code>admin123</code></p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     ADMIN APP (shown after login)
+════════════════════════════════════════════════════ -->
+<div id="admin-app">
+
+  <!-- ── Sidebar ──────────────────────────────────────── -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <div class="logo-icon">✦</div>
+        <div>
+          <span>Admin Panel</span>
+          <small>Portfolio Manager</small>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Content</div>
+      <button class="nav-item active" data-target="dashboard">
+        <ion-icon name="grid-outline"></ion-icon><span>Dashboard</span>
+      </button>
+      <button class="nav-item" data-target="profile">
+        <ion-icon name="person-outline"></ion-icon><span>Profile</span>
+      </button>
+      <button class="nav-item" data-target="skills">
+        <ion-icon name="star-outline"></ion-icon><span>Skills</span>
+      </button>
+      <button class="nav-item" data-target="projects">
+        <ion-icon name="briefcase-outline"></ion-icon><span>Projects</span>
+      </button>
+      <button class="nav-item" data-target="education">
+        <ion-icon name="school-outline"></ion-icon><span>Education</span>
+      </button>
+      <button class="nav-item" data-target="certifications">
+        <ion-icon name="ribbon-outline"></ion-icon><span>Certifications</span>
+      </button>
+      <div class="nav-section-label">System</div>
+      <button class="nav-item" data-target="settings">
+        <ion-icon name="settings-outline"></ion-icon><span>Settings</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html" class="preview-link" target="_blank">
+        <ion-icon name="open-outline"></ion-icon><span>View Site</span>
+      </a>
+      <button class="logout-btn" onclick="doLogout()">
+        <ion-icon name="log-out-outline"></ion-icon><span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ──────────────────────────────────── -->
+  <main class="admin-main">
+
+    <!-- DASHBOARD -->
+    <section id="sec-dashboard" class="admin-section active">
+      <div class="section-header">
+        <div>
+          <h2>Dashboard</h2>
+          <p>Overview of your portfolio content</p>
+        </div>
+      </div>
+      <div class="stats-row" id="stats-row"></div>
+      <div class="card">
+        <div class="card-title"><ion-icon name="flash-outline"></ion-icon> Quick Actions</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="switchTab('profile')">
+            <ion-icon name="create-outline"></ion-icon> Edit Profile
+          </button>
+          <button class="btn btn-ghost" onclick="switchTab('skills')">
+            <ion-icon name="star-outline"></ion-icon> Manage Skills
+          </button>
+          <button class="btn btn-ghost" onclick="switchTab('projects')">
+            <ion-icon name="briefcase-outline"></ion-icon> Add Project
+          </button>
+          <a href="index.html" target="_blank" class="btn btn-ghost">
+            <ion-icon name="open-outline"></ion-icon> Preview Site
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="sec-profile" class="admin-section">
+      <div class="section-header">
+        <div><h2>Profile</h2><p>Edit your personal information and social links</p></div>
+      </div>
+
+      <!-- Avatar -->
+      <div class="card">
+        <div class="card-title"><ion-icon name="image-outline"></ion-icon> Profile Photo</div>
+        <div class="avatar-upload-wrap">
+          <img id="admin-avatar-preview" class="avatar-preview" src="assets/images/self.jpg" alt="Avatar">
+          <div>
+            <label class="upload-btn" for="avatar-file-input">
+              <ion-icon name="cloud-upload-outline"></ion-icon> Upload Photo
+            </label>
+            <input id="avatar-file-input" type="file" accept="image/*" style="display:none" onchange="handleAvatarUpload(this)">
+            <p style="color:var(--muted);font-size:12px;margin-top:8px;">Recommended: square image, JPG/PNG, under 1MB</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Basic Info -->
+      <div class="card">
+        <div class="card-title"><ion-icon name="person-outline"></ion-icon> Basic Information</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="p-name">
+          </div>
+          <div class="form-group">
+            <label>Professional Title</label>
+            <input type="text" id="p-title">
+          </div>
+          <div class="form-group span2">
+            <label>Bio / About Me</label>
+            <textarea id="p-bio" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="p-email">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="p-phone">
+          </div>
+          <div class="form-group">
+            <label>Birthday</label>
+            <input type="text" id="p-birthday" placeholder="e.g. February 18, 2004">
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="p-location">
+          </div>
+          <div class="form-group span2">
+            <label>Resume URL (Google Drive / Dropbox direct link)</label>
+            <input type="url" id="p-resume" placeholder="https://...">
+          </div>
+        </div>
+        <div style="margin-top:18px;">
+          <button class="btn btn-primary" onclick="saveProfile()">
+            <ion-icon name="save-outline"></ion-icon> Save Profile
+          </button>
+        </div>
+      </div>
+
+      <!-- Socials -->
+      <div class="card">
+        <div class="card-title"><ion-icon name="share-social-outline"></ion-icon> Social Links</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Facebook URL</label>
+            <input type="url" id="s-facebook" placeholder="https://facebook.com/...">
+          </div>
+          <div class="form-group">
+            <label>Twitter / X URL</label>
+            <input type="url" id="s-twitter" placeholder="https://x.com/...">
+          </div>
+          <div class="form-group">
+            <label>Instagram URL</label>
+            <input type="url" id="s-instagram" placeholder="https://instagram.com/...">
+          </div>
+          <div class="form-group">
+            <label>LinkedIn URL</label>
+            <input type="url" id="s-linkedin" placeholder="https://linkedin.com/in/...">
+          </div>
+          <div class="form-group span2">
+            <label>GitHub URL</label>
+            <input type="url" id="s-github" placeholder="https://github.com/...">
+          </div>
+        </div>
+        <div style="margin-top:18px;">
+          <button class="btn btn-primary" onclick="saveSocials()">
+            <ion-icon name="save-outline"></ion-icon> Save Social Links
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="sec-skills" class="admin-section">
+      <div class="section-header">
+        <div><h2>Skills</h2><p>Add, edit, or remove your skills</p></div>
+        <button class="btn btn-primary" onclick="togglePanel('skill-add-panel')">
+          <ion-icon name="add"></ion-icon> Add Skill
+        </button>
+      </div>
+
+      <div id="skill-add-panel" class="add-panel card">
+        <div class="card-title"><ion-icon name="add-circle-outline"></ion-icon> New Skill</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Skill Name</label>
+            <input type="text" id="sk-name" placeholder="e.g. Python">
+          </div>
+          <div class="form-group">
+            <label>Icon Image</label>
+            <label class="upload-btn" for="sk-icon-file">
+              <ion-icon name="image-outline"></ion-icon> Choose Icon
+            </label>
+            <input id="sk-icon-file" type="file" accept="image/*" style="display:none" onchange="previewSkillIcon(this)">
+            <img id="sk-icon-preview" src="" alt="" style="display:none;width:40px;height:40px;border-radius:8px;margin-top:8px;object-fit:cover;">
+            <input type="hidden" id="sk-icon-data">
+          </div>
+          <div class="form-group span2">
+            <label>Description</label>
+            <textarea id="sk-desc" rows="2" placeholder="Describe this skill..."></textarea>
+          </div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px;">
+          <button class="btn btn-success" onclick="addSkill()">
+            <ion-icon name="checkmark-outline"></ion-icon> Add Skill
+          </button>
+          <button class="btn btn-ghost" onclick="togglePanel('skill-add-panel')">Cancel</button>
+        </div>
+      </div>
+
+      <div id="skills-admin-list" class="items-grid"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="sec-projects" class="admin-section">
+      <div class="section-header">
+        <div><h2>Projects</h2><p>Showcase your work</p></div>
+        <button class="btn btn-primary" onclick="togglePanel('project-add-panel')">
+          <ion-icon name="add"></ion-icon> Add Project
+        </button>
+      </div>
+
+      <div id="project-add-panel" class="add-panel card">
+        <div class="card-title"><ion-icon name="add-circle-outline"></ion-icon> New Project</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Project Title</label>
+            <input type="text" id="pr-title" placeholder="My Awesome Project">
+          </div>
+          <div class="form-group">
+            <label>Tags (comma-separated)</label>
+            <input type="text" id="pr-tags" placeholder="Python, ML, Web">
+          </div>
+          <div class="form-group span2">
+            <label>Description</label>
+            <textarea id="pr-desc" rows="2" placeholder="Brief project description..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Live Link</label>
+            <input type="url" id="pr-link" placeholder="https://...">
+          </div>
+          <div class="form-group">
+            <label>GitHub Link</label>
+            <input type="url" id="pr-github" placeholder="https://github.com/...">
+          </div>
+          <div class="form-group span2">
+            <label>Screenshot</label>
+            <label class="upload-btn" for="pr-img-file">
+              <ion-icon name="image-outline"></ion-icon> Upload Screenshot
+            </label>
+            <input id="pr-img-file" type="file" accept="image/*" style="display:none" onchange="previewProjectImg(this)">
+            <img id="pr-img-preview" src="" alt="" style="display:none;width:180px;border-radius:10px;margin-top:8px;object-fit:cover;">
+            <input type="hidden" id="pr-img-data">
+          </div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px;">
+          <button class="btn btn-success" onclick="addProject()">
+            <ion-icon name="checkmark-outline"></ion-icon> Add Project
+          </button>
+          <button class="btn btn-ghost" onclick="togglePanel('project-add-panel')">Cancel</button>
+        </div>
+      </div>
+
+      <div id="projects-admin-list" class="items-grid"></div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="sec-education" class="admin-section">
+      <div class="section-header">
+        <div><h2>Education</h2><p>Manage your educational background</p></div>
+        <button class="btn btn-primary" onclick="togglePanel('edu-add-panel')">
+          <ion-icon name="add"></ion-icon> Add Education
+        </button>
+      </div>
+
+      <div id="edu-add-panel" class="add-panel card">
+        <div class="card-title"><ion-icon name="add-circle-outline"></ion-icon> New Education Entry</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Degree / Qualification</label>
+            <input type="text" id="ed-degree" placeholder="B.Tech in Computer Science">
+          </div>
+          <div class="form-group">
+            <label>Institution</label>
+            <input type="text" id="ed-institution" placeholder="University Name">
+          </div>
+          <div class="form-group">
+            <label>Year / Period</label>
+            <input type="text" id="ed-year" placeholder="2022 – Present">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <input type="text" id="ed-desc" placeholder="Brief description...">
+          </div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px;">
+          <button class="btn btn-success" onclick="addEducation()">
+            <ion-icon name="checkmark-outline"></ion-icon> Add
+          </button>
+          <button class="btn btn-ghost" onclick="togglePanel('edu-add-panel')">Cancel</button>
+        </div>
+      </div>
+
+      <div id="education-admin-list" class="items-grid"></div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="sec-certifications" class="admin-section">
+      <div class="section-header">
+        <div><h2>Certifications</h2><p>Add your certificates and achievements</p></div>
+        <button class="btn btn-primary" onclick="togglePanel('cert-add-panel')">
+          <ion-icon name="add"></ion-icon> Add Certification
+        </button>
+      </div>
+
+      <div id="cert-add-panel" class="add-panel card">
+        <div class="card-title"><ion-icon name="add-circle-outline"></ion-icon> New Certification</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Certificate Name</label>
+            <input type="text" id="ce-name" placeholder="e.g. Azure Fundamentals AZ-900">
+          </div>
+          <div class="form-group">
+            <label>Issuing Organization</label>
+            <input type="text" id="ce-issuer" placeholder="e.g. Microsoft">
+          </div>
+          <div class="form-group">
+            <label>Date Issued</label>
+            <input type="text" id="ce-date" placeholder="e.g. March 2024">
+          </div>
+          <div class="form-group">
+            <label>Certificate Image</label>
+            <label class="upload-btn" for="ce-img-file">
+              <ion-icon name="image-outline"></ion-icon> Upload Image
+            </label>
+            <input id="ce-img-file" type="file" accept="image/*" style="display:none" onchange="previewCertImg(this)">
+            <img id="ce-img-preview" src="" alt="" style="display:none;width:120px;border-radius:8px;margin-top:8px;">
+            <input type="hidden" id="ce-img-data">
+          </div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px;">
+          <button class="btn btn-success" onclick="addCertification()">
+            <ion-icon name="checkmark-outline"></ion-icon> Add
+          </button>
+          <button class="btn btn-ghost" onclick="togglePanel('cert-add-panel')">Cancel</button>
+        </div>
+      </div>
+
+      <div id="certs-admin-list" class="items-grid"></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="sec-settings" class="admin-section">
+      <div class="section-header">
+        <div><h2>Settings</h2><p>Admin configuration and data management</p></div>
+      </div>
+
+      <div class="settings-grid">
+        <!-- Change Password -->
+        <div class="card">
+          <div class="card-title"><ion-icon name="lock-closed-outline"></ion-icon> Change Password</div>
+          <div class="form-group" style="margin-bottom:12px;">
+            <label>Current Password</label>
+            <input type="password" id="set-old-pwd">
+          </div>
+          <div class="form-group" style="margin-bottom:12px;">
+            <label>New Password</label>
+            <input type="password" id="set-new-pwd">
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label>Confirm New Password</label>
+            <input type="password" id="set-confirm-pwd">
+          </div>
+          <button class="btn btn-primary" onclick="changePassword()">
+            <ion-icon name="key-outline"></ion-icon> Change Password
+          </button>
+        </div>
+
+        <!-- Export / Import -->
+        <div class="card">
+          <div class="card-title"><ion-icon name="archive-outline"></ion-icon> Backup &amp; Restore</div>
+          <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">Export your data as JSON to back it up, or import it on another device.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <button class="btn btn-ghost" onclick="exportData()">
+              <ion-icon name="download-outline"></ion-icon> Export Data (JSON)
+            </button>
+            <label class="btn btn-ghost" for="import-file" style="cursor:pointer;">
+              <ion-icon name="upload-outline"></ion-icon> Import Data (JSON)
+            </label>
+            <input id="import-file" type="file" accept=".json" style="display:none" onchange="importData(this)">
+            <button class="btn btn-danger" onclick="resetData()">
+              <ion-icon name="refresh-outline"></ion-icon> Reset to Defaults
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- Edit Modal -->
+<div id="edit-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;">
+  <div class="card" style="width:min(560px,95vw);max-height:85vh;overflow-y:auto;position:relative;">
+    <div class="card-title" id="modal-title">Edit Item</div>
+    <div id="modal-body"></div>
+    <div style="margin-top:16px;display:flex;gap:10px;">
+      <button class="btn btn-primary" id="modal-save-btn">Save</button>
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/portfolio-data.js"></script>
+<script src="assets/js/admin.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
